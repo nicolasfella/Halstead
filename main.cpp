@@ -5,6 +5,7 @@
 #include <map>
 #include <set>
 #include <climits>
+#include <cmath>
 
 #define ll long long
 #define pb push_back
@@ -36,6 +37,16 @@ const string ops[] = {
 	"double",
 	"long",
 	"long long",
+    "uint",
+    "quint64",
+    "quint32",
+    "qint32",
+    "qint64",
+    "QString",
+    "bool",
+    "qulonglong",
+    "unsigned long",
+    "auto",
 
 	// control flow
 	"if",
@@ -146,13 +157,12 @@ void _adjust_redundancy()
 	return;
 }
 
-int main()
+int main(int argc, char** argv)
 {
 
 	// fill the operators
 	_popualate_operators();
 	_popualate_redundancy_pairs();
-
 
 	// we now create a regex for identifier
 	regex identifier_def( "[A-Za-z][A-Za-z0-9]*" );
@@ -164,7 +174,7 @@ int main()
 
 	smatch sm;
 
-	ifstream file( "code.txt" );
+	ifstream file( argv[1] );
 	string input;
 
 	if ( file.is_open() )
